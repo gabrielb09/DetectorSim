@@ -1,6 +1,6 @@
-#include "LabDetectorConstruction.hh"
+#include "DetectorConstruction.hh"
 
-void LabDetectorConstruction::ConstructChamber(){
+inline void DetectorConstruction::ConstructChamber(){
 	// chamber walls
 	chamberS = new G4Tubs("baseCylinder", inner_radius = 47.5*cm - 2.54*cm, outer_radius = 47.5*cm, height = 0.5*90.0*cm, 0, 360*deg);
 	chamberL = new G4LogicalVolume(chamberS, Iron, "Chamber_Walls_Logical");

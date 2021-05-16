@@ -1,13 +1,13 @@
-#include "LabDetectorConstruction.hh"
+#include "DetectorConstruction.hh"
 #include "G4TwoVector.hh"
 
 // function to get the x positions of a circle: used to calcualte the length of the grooves
-G4double getCirlceX(G4double r, G4double y){
+inline G4double getCirlceX(G4double r, G4double y){
 	G4double x = sqrt(pow(r,2.) - pow(y,2.)); // x = sqrt(r^2 - y^2)
 	return x;
 }
 
-void LabDetectorConstruction::ConstructSiLi(){
+inline void DetectorConstruction::ConstructSiLi(){
 
 	G4double groovePositions[7] = {0.0*cm, -2.89*cm, -1.84*cm, -0.9*cm, 0.9*cm, 1.84*cm, 2.89*cm}; // Positions of grooves from center of detector
 

@@ -1,6 +1,6 @@
-#include "LabDetectorConstruction.hh"
+#include "DetectorConstruction.hh"
 
-void LabDetectorConstruction::ConstructAlSquare(){
+inline void DetectorConstruction::ConstructAlSquare(){
 	// base solids
 	G4Box* baseSquare = new G4Box("baseSquare", length = 0.5*12.7*cm, width = 0.5*12.7*cm, thickness = 0.5*4.76*mm);
 

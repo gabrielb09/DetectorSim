@@ -1,6 +1,6 @@
-#include "LabDetectorConstruction.hh"
+#include "DetectorConstruction.hh"
 
-void LabDetectorConstruction::ConstructPreAmp(){
+inline void DetectorConstruction::ConstructPreAmp(){
 	// main PCB
 	G4Box* mainPCB = new G4Box("mainPCB", length = 0.5*91.6*mm, width = 0.5*75.7*mm, thickness = 0.5*1.6*mm);
 

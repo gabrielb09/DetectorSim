@@ -1,6 +1,6 @@
-#include "LabDetectorConstruction.hh"
+#include "DetectorConstruction.hh"
 
-void LabDetectorConstruction::ConstructCoolingMount(){
+inline void DetectorConstruction::ConstructCoolingMount(){
 
 	// mount base
 	G4Box* mountBase = new G4Box("mountBase", width = 0.5*88.90*mm, length = 0.5*30.48*cm, thickness = 0.5*12.70*mm);

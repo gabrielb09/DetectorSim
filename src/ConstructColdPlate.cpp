@@ -1,6 +1,6 @@
-#include "LabDetectorConstruction.hh"
+#include "DetectorConstruction.hh"
 
-void LabDetectorConstruction::ConstructColdPlate(){
+inline void DetectorConstruction::ConstructColdPlate(){
 
 	G4Box* plateBase = new G4Box("plateBase", width = 0.5*12.70*cm, length = 0.5*30.48*cm, height = 0.5*6.35*mm);
 

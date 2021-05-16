@@ -1,37 +1,5 @@
-//
-// ********************************************************************
-// * License and Disclaimer                                           *
-// *                                                                  *
-// * The  Geant4 software  is  copyright of the Copyright Holders  of *
-// * the Geant4 Collaboration.  It is provided  under  the terms  and *
-// * conditions of the Geant4 Software License,  included in the file *
-// * LICENSE and available at  http://cern.ch/geant4/license .  These *
-// * include a list of copyright holders.                             *
-// *                                                                  *
-// * Neither the authors of this software system, nor their employing *
-// * institutes,nor the agencies providing financial support for this *
-// * work  make  any representation or  warranty, express or implied, *
-// * regarding  this  software system or assume any liability for its *
-// * use.  Please see the license in the file  LICENSE  and URL above *
-// * for the full disclaimer and the limitation of liability.         *
-// *                                                                  *
-// * This  code  implementation is the result of  the  scientific and *
-// * technical work of the GEANT4 collaboration.                      *
-// * By using,  copying,  modifying or  distributing the software (or *
-// * any work based  on the software)  you  agree  to acknowledge its *
-// * use  in  resulting  scientific  publications,  and indicate your *
-// * acceptance of all terms of the Geant4 Software license.          *
-// ********************************************************************
-//
-//
-// $Id: LabDetectorConstruction.cc,v 1.19 2007/05/11 14:35:01 gcosmo Exp $
-// GEANT4 tag $Name: geant4-09-00 $
-//
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
-
-#include "LabDetectorConstruction.hh"
-#include "LabDetectorMessenger.hh"
+#include "DetectorConstruction.hh"
+#include "DetectorMessenger.hh"
 
 #include "ConstructSiLi.cpp"
 #include "ConstructMount.cpp"
@@ -66,32 +34,26 @@
 #include "G4UserLimits.hh"
 #include "G4Colour.hh"
 #include "G4ios.hh"
-#include "global.h"
 #include "G4SystemOfUnits.hh"
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-LabDetectorConstruction::LabDetectorConstruction()
+DetectorConstruction::DetectorConstruction()
 :worldS(0),worldL(0),worldP(0)
 {
   DefineMaterials();
-	detectorMessenger = new LabDetectorMessenger(this);
-
-    extern global_struct global;
-	// sprintf(global.outdir, "tmp");
-	// sprintf(global.outfile, "test");
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-LabDetectorConstruction::~LabDetectorConstruction()
+DetectorConstruction::~DetectorConstruction()
 {
   delete detectorMessenger;
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-void LabDetectorConstruction::DefineMaterials()
+void DetectorConstruction::DefineMaterials()
 {
     // Material definition with NIST Manager
 
@@ -218,15 +180,12 @@ void LabDetectorConstruction::DefineMaterials()
     G4cout << *(G4Material::GetMaterialTable()) << G4endl;
 }
 
-G4VPhysicalVolume* LabDetectorConstruction::Construct()
+G4VPhysicalVolume* DetectorConstruction::Construct()
 {
-	return ConstructLabDetector();
+	return ConstructDetector();
 }
-G4VPhysicalVolume* LabDetectorConstruction::ConstructLabDetector()
+G4VPhysicalVolume* DetectorConstruction::ConstructDetector()
 {
-	extern global_struct global;
-	overlap = global.CheckOverlap;
-
     //------------------------------------------------
     // Copy Number
     //------------------------------------------------
@@ -319,12 +278,16 @@ G4VPhysicalVolume* LabDetectorConstruction::ConstructLabDetector()
     // Test Mount
     //------------------------------------------------
 
+    G4cout << "making mount" << G4endl;
+
     // create Mount
     ConstructMount();
     // place the mount above the detector
     mountP = new G4PVPlacement(0, G4ThreeVector(0, 0, 3.35*mm), mountL, "MountPhys", worldL, false, CopyMount);
     mountRingP = new G4PVPlacement(0, G4ThreeVector(0, 0, 2.8*mm), mountRingL, "Mount_Ring_Phys", worldL, false, CopyMount);
     insulatingRingP = new G4PVPlacement(0, G4ThreeVector(0, 0, -2.8*mm), insulatingRingL, "Insulating_Ring_Phys", worldL, false, CopyMount);
+
+    G4cout << "finished mount" << G4endl;
     //------------------------------------------------
     // Pre-Amp
     //------------------------------------------------
@@ -342,6 +305,7 @@ G4VPhysicalVolume* LabDetectorConstruction::ConstructLabDetector()
     //------------------------------------------------
 
     // create Detector and Polyimide solids
+    G4cout << "making SiLi" << G4endl;
 
     ConstructSiLi();
 
@@ -359,7 +323,7 @@ G4VPhysicalVolume* LabDetectorConstruction::ConstructLabDetector()
     R3003VisAtt = new G4VisAttributes(G4Colour(0.8, 0.8, 0.8, 1.0));
     CuVisAtt = new G4VisAttributes(G4Colour(0.58, 0.27, 0.13, 1.0));
     ChamberVisAtt = new G4VisAttributes(G4Colour(0.50, 0.50, 0.50, 0.25));
-    PIVisAtt = new G4VisAttributes(G4Colour(0.65, 0.54, 0.20, 0.5));
+    PIVisAtt = new G4VisAttributes(G4Colour(0.65, 0.54, 0.20, 0.75));
     N2VisAtt = new G4VisAttributes(G4Colour(0.29, 0.64, 0.97, 0.5));
     NiVisAtt = new G4VisAttributes(G4Colour(1.00, 1.00, 1.00, 1.0));
     SteelVisAtt = new G4VisAttributes(G4Colour(0.50, 0.50, 0.50, 1.0));
@@ -388,26 +352,14 @@ G4VPhysicalVolume* LabDetectorConstruction::ConstructLabDetector()
 	return worldP;
 }
 
-void LabDetectorConstruction::ConstructSDandField()
+void DetectorConstruction::ConstructSDandField()
 {
   DetectorManager = G4SDManager::GetSDMpointer();
   SDetector = DetectorManager -> FindSensitiveDetector("SensitiveSiLi", false);
 
-  SDetector = new LabDetectorSD("SensitiveSiLi");
+  SDetector = new DetectorSD("SensitiveSiLi");
   DetectorManager -> AddNewDetector(SDetector);
   SetSensitiveDetector(detectorL, SDetector);
-}
-
-void LabDetectorConstruction::UpdateGeometry()
-{
-	// Cleanup old geometry
-	G4GeometryManager::GetInstance()->OpenGeometry();
-	G4PhysicalVolumeStore::GetInstance()->Clean();
-	G4LogicalVolumeStore::GetInstance()->Clean();
-	G4SolidStore::GetInstance()->Clean();
-
-	G4RunManager::GetRunManager()->DefineWorldVolume(ConstructLabDetector());
-	G4RunManager::GetRunManager()->GeometryHasBeenModified();
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......

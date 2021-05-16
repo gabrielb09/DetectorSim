@@ -1,6 +1,6 @@
-#include "LabDetectorConstruction.hh"
+#include "DetectorConstruction.hh"
 
-void LabDetectorConstruction::ConstructMount(){
+inline void DetectorConstruction::ConstructMount(){
 	// base aluminium box
 	G4Box* mountBase = new G4Box("mountBase", length = 0.5*120.0*mm, width = 0.5*120.0*mm, thickness = 0.5*12.0*mm);
 
