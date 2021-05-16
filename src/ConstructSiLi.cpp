@@ -9,7 +9,7 @@ inline G4double getCirlceX(G4double r, G4double y){
 
 inline void DetectorConstruction::ConstructSiLi(){
 
-	G4double groovePositions[7] = {0.0*cm, -2.89*cm, -1.84*cm, -0.9*cm, 0.9*cm, 1.84*cm, 2.89*cm}; // Positions of grooves from center of detector
+	G4double groovePositions[7] = {-2.89*cm, -1.84*cm, -0.9*cm, 0.0*cm, 0.9*cm, 1.84*cm, 2.89*cm}; // Positions of grooves from center of detector
 
 	// Initial Wafer
   G4Tubs* SiLiWaffer = new G4Tubs("SiLiWaffer",0.0, radius = 5.05*cm, thickness = 0.5*2.5*mm, 0, 360*deg);
@@ -40,12 +40,12 @@ inline void DetectorConstruction::ConstructSiLi(){
 			std::vector<G4TwoVector> vertecies(8);
 			// find vertecies
 			G4double x[4] = {
-											 getCirlceX(4.55*cm, groovePositions[i] + 0.5*1.0*mm),
-										-1*getCirlceX(4.55*cm, groovePositions[i] + 0.5*1.0*mm),
-	    					 		-1*getCirlceX(4.55*cm, groovePositions[i] - 0.5*1.0*mm),
-										   getCirlceX(4.55*cm, groovePositions[i] - 0.5*1.0*mm)
+											 getCirlceX(4.55*cm, groovePositions[i] + 0.5*mm),
+										-1*getCirlceX(4.55*cm, groovePositions[i] - 0.5*mm),
+	    					 		-1*getCirlceX(4.55*cm, groovePositions[i] - 0.5*mm),
+										   getCirlceX(4.55*cm, groovePositions[i] + 0.5*mm)
 										 };
-	    G4double y[4] = {0.5*1.0*mm, 0.5*1.0*mm, -0.5*1.0*mm, -0.5*1.0*mm};
+	    G4double y[4] = {0.5*mm, -0.5*mm, -0.5*mm, 0.5*mm};
 
 			for (int j = 0; j < 4; j++){
 				vertecies[j]   = G4TwoVector(x[j], y[j]);
