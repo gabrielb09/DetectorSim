@@ -1,0 +1,16 @@
+/run/verbose 2
+/tracking/verbose 2
+/event/verbose 2
+
+/gps/particle gamma
+/gps/pos/type Point
+/gps/position 0 0 102 mm
+
+/gps/ang/type iso
+
+/gps/ene/type Mono
+/gps/ene/mono 59.5 keV
+
+/OutputDirectory ../output
+/OutputFile run_1
+/run/beamOn 100000000
