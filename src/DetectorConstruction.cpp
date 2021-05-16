@@ -278,8 +278,6 @@ G4VPhysicalVolume* DetectorConstruction::ConstructDetector()
     // Test Mount
     //------------------------------------------------
 
-    G4cout << "making mount" << G4endl;
-
     // create Mount
     ConstructMount();
     // place the mount above the detector
@@ -287,7 +285,6 @@ G4VPhysicalVolume* DetectorConstruction::ConstructDetector()
     mountRingP = new G4PVPlacement(0, G4ThreeVector(0, 0, 2.8*mm), mountRingL, "Mount_Ring_Phys", worldL, false, CopyMount);
     insulatingRingP = new G4PVPlacement(0, G4ThreeVector(0, 0, -2.8*mm), insulatingRingL, "Insulating_Ring_Phys", worldL, false, CopyMount);
 
-    G4cout << "finished mount" << G4endl;
     //------------------------------------------------
     // Pre-Amp
     //------------------------------------------------
@@ -305,8 +302,6 @@ G4VPhysicalVolume* DetectorConstruction::ConstructDetector()
     //------------------------------------------------
 
     // create Detector and Polyimide solids
-    G4cout << "making SiLi" << G4endl;
-
     ConstructSiLi();
 
     translation.setX(0); translation.setY(0); translation.setZ(0);
