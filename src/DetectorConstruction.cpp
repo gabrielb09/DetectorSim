@@ -158,9 +158,9 @@ void DetectorConstruction::DefineMaterials()
       HolderMat -> AddMaterial(Copper, FractionMass = 11.85*perCent);
 
     R3003 = new G4Material("Rogers 3003", density = 2.1*g/cm3, nel = 3);
-      R3003 -> AddMaterial(SiO2, FractionMass = 55.75*perCent);
-      R3003 -> AddMaterial(TiO2, FractionMass = 9.835*perCent);
-      R3003 -> AddMaterial(PTFE, FractionMass = 34.55*perCent);
+      R3003 -> AddMaterial(SiO2, FractionMass = 55.66*perCent);
+      R3003 -> AddMaterial(TiO2, FractionMass = 9.84*perCent);
+      R3003 -> AddMaterial(PTFE, FractionMass = 34.5*perCent);
 
     PreAmpMat = new G4Material("Rogers 3003 PCB", density = 2.424*g/cm3, nel = 2);
       PreAmpMat -> AddMaterial(R3003, FractionMass = 86.64*perCent);
@@ -343,6 +343,8 @@ G4VPhysicalVolume* DetectorConstruction::ConstructDetector()
     holderL -> SetVisAttributes(FR4VisAtt);
     preAmpL -> SetVisAttributes(R3003VisAtt);
     copperL -> SetVisAttributes(CuVisAtt);
+    mountRingL -> SetVisAttributes(AlVisAtt);
+    insulatingRingL -> SetVisAttributes(FR4VisAtt);
 
 	return worldP;
 }
