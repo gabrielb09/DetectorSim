@@ -14,6 +14,7 @@ DetectorRunAction::DetectorRunAction()
   detectorMessenger = new DetectorMessenger(this);
 
   auto analysisManager = G4AnalysisManager::Instance();
+  analysisManager -> SetNtupleMerging(true);
 
   analysisManager -> SetVerboseLevel(1);
 
