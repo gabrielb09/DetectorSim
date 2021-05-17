@@ -153,7 +153,7 @@ void DetectorConstruction::DefineMaterials()
         FR_4 -> AddMaterial(EGlass, FractionMass = 60.0*perCent);
         FR_4 -> AddMaterial(Resin, FractionMass = 40.0*perCent);
 
-    HolderMat = new G4Material("FR_4", density = 2.099*g/cm3, nel = 2);
+    HolderMat = new G4Material("FR4 PCB", density = 2.099*g/cm3, nel = 2);
       HolderMat -> AddMaterial(FR_4, FractionMass = 88.15*perCent);
       HolderMat -> AddMaterial(Copper, FractionMass = 11.85*perCent);
 
@@ -162,7 +162,7 @@ void DetectorConstruction::DefineMaterials()
       R3003 -> AddMaterial(TiO2, FractionMass = 9.84*perCent);
       R3003 -> AddMaterial(PTFE, FractionMass = 34.6*perCent);
 
-    PreAmpMat = new G4Material("FR_4", density = 2.424*g/cm3, nel = 2);
+    PreAmpMat = new G4Material("Rogers 3003 PCB", density = 2.424*g/cm3, nel = 2);
       PreAmpMat -> AddMaterial(R3003, FractionMass = 86.64*perCent);
       PreAmpMat -> AddMaterial(Copper, FractionMass = 13.36*perCent);
     // Polyimide
@@ -293,7 +293,7 @@ G4VPhysicalVolume* DetectorConstruction::ConstructDetector()
     ConstructPreAmp();
     // place preAmp
     rotation = G4RotationMatrix();
-    translation.setX(-45.355); translation.setY(0); translation.setZ(12.65*mm);
+    translation.setX(-28.967); translation.setY(0); translation.setZ(12.65*mm);
   	transform = G4Transform3D(rotation, translation);
     preAmp -> MakeImprint(worldL, transform);
 

@@ -1,0 +1,8 @@
+/vis/open RayTracer
+/vis/viewer/zoom 1
+/vis/viewer/set/viewpointThetaPhi 60 10
+/vis/geometry/set/visibility World 0 0
+/vis/geometry/set/visibility Chamber_Walls_Logical 0 0
+/vis/geometry/set/visibility Faraday_Cage_Logical 0 0
+/vis/drawVolume
+/vis/viewer/refresh

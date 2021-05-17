@@ -41,9 +41,9 @@ inline void DetectorConstruction::ConstructSiLi(){
 			// find vertecies
 			G4double x[4] = {
 											 getCirlceX(4.55*cm, groovePositions[i] + 0.5*mm),
-										-1*getCirlceX(4.55*cm, groovePositions[i] - 0.5*mm),
+											 getCirlceX(4.55*cm, groovePositions[i] - 0.5*mm),
 	    					 		-1*getCirlceX(4.55*cm, groovePositions[i] - 0.5*mm),
-										   getCirlceX(4.55*cm, groovePositions[i] + 0.5*mm)
+										-1*getCirlceX(4.55*cm, groovePositions[i] + 0.5*mm)
 										 };
 	    G4double y[4] = {0.5*mm, -0.5*mm, -0.5*mm, 0.5*mm};
 
