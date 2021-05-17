@@ -1,0 +1,7 @@
+/vis/open OGL
+/vis/viewer/set/style surface
+/vis/viewer/zoom 15
+/vis/viewer/set/viewpointThetaPhi 90 180
+/vis/drawVolume
+/vis/geometry/set/visibility World 0 0
+/vis/geometry/set/visibility Chamber_Walls_Logical 0 0
