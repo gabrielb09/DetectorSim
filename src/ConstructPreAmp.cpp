@@ -26,10 +26,10 @@ inline void DetectorConstruction::ConstructPreAmp(){
 	preAmps -> Voxelize();
 
 	// pins
-	G4Tubs* pin = new G4Tubs("pin", 0, radius = 0.825*mm, length = 0.5*12.2*mm, 0, 360*deg);
+	G4Tubs* pin = new G4Tubs("pin", 0, radius = 0.825*mm, length = 0.5*5.2*mm, 0, 360*deg);
 	// links
 	G4Torus* linkArc = new G4Torus("linkArc", 0, thickness = 0.6*mm, radius = 2.28*mm, 0, 90*deg);
-	G4Tubs* linkPin = new G4Tubs("linkPin", 0, thickness = 0.6*mm, length = 0.5*5.09*mm, 0, 360*deg);
+	G4Tubs* linkPin = new G4Tubs("linkPin", 0, thickness = 0.6*mm, length = 0.5*3.09*mm, 0, 360*deg);
 
 	// Copper leads
  	G4MultiUnion* cuLeads = new G4MultiUnion("cuLeads");
@@ -37,13 +37,13 @@ inline void DetectorConstruction::ConstructPreAmp(){
 	G4double pinLocations[8] = {34.55*mm, 23.628*mm, 13.722*mm, 4.578*mm, -4.566*mm, -13.71*mm, -23.616*mm, -34.538*mm};
 	G4double jointLocations[7] = {12.53*mm, 16.34*mm, 20.15*mm, 23.96*mm, 27.77*mm, 32.85*mm, 36.66*mm};
 	for (int i = 0; i < 8; i++){
-		translation.setX(40.645*mm); translation.setY(pinLocations[i]); translation.setZ(-5.3*mm);
+		translation.setX(40.645*mm); translation.setY(pinLocations[i]); translation.setZ(-1.8*mm);
 		transform = G4Transform3D(rotation, translation);
 		cuLeads -> AddNode(*pin, transform);
 
 		for (int j = 0; j < 7; j++){
 
-			translation.setX(jointLocations[j]); translation.setY(vertLocations[i] - 2.0*mm); translation.setZ(-1.745*mm);
+			translation.setX(jointLocations[j]); translation.setY(vertLocations[i] - 2.0*mm); translation.setZ(-0.745*mm);
 			transform = G4Transform3D(rotation, translation);
 			cuLeads -> AddNode(*linkPin, transform);
 
