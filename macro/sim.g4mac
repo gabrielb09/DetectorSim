@@ -1,10 +1,10 @@
-/run/verbose 2
-/tracking/verbose 2
-/event/verbose 2
+/run/verbose 0
+/tracking/verbose 0
+/event/verbose 0
 
 /gps/particle gamma
 /gps/pos/type Point
-/gps/position 0 0 102 mm
+/gps/position 0 0 67.69 mm
 
 /gps/ang/type iso
 

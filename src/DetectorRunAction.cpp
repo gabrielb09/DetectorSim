@@ -48,7 +48,7 @@ DetectorRunAction::~DetectorRunAction()
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 void DetectorRunAction::BeginOfRunAction(const G4Run* aRun)
-{;
+{
   char fname[100];
 
   G4cout << "### Run " << aRun -> GetRunID() << " start." << G4endl;
