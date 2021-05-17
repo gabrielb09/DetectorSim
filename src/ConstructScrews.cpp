@@ -3,7 +3,7 @@
 inline void DetectorConstruction::ConstructScrews(){
 
   G4Tubs* screw = new G4Tubs("screw", 0, radius = 2.65*mm, length = 0.5*32.65*mm, 0, 360*deg);
-  G4Tubs* mountScrew = new G4Tubs("screw", 0, radius = 1.5*mm, length = 0.5*12.7*mm);
+  G4Tubs* mountScrew = new G4Tubs("screw", 0, radius = 1.5*mm, length = 0.5*12.7*mm, 0, 360*deg);
   G4Tubs* washer = new G4Tubs("washer", inner_radius = 2.67*mm, outer_radius = 0.5*18.67*mm, thickness = 0.5*1.19*mm, 0, 360*deg);
 
   ScrewsS = new G4MultiUnion("Screws");
