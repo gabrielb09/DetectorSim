@@ -80,11 +80,12 @@ inline void DetectorConstruction::ConstructMount(){
 
 	// subtract notches from base
 	G4VSolid* mount = new G4SubtractionSolid("Mount", mountHoled, Notches, 0, G4ThreeVector(0, 0, 0));
-	mountS = new G4SubtractionSolid("Mount", mount, ScrewsS, 0, G4ThreeVector(0, 0, 0));
+	mountS = new G4SubtractionSolid("Mount", mount, ScrewsS, 0, G4ThreeVector(0, 0, -2.0*mm));
 	mountL = new G4LogicalVolume(mountS, Aluminium, "MountLog");
 
 	// mounting ring
-	mountRingS = new G4Tubs("Mount_Ring", inner_radius = 46.5*mm, outer_radius = 56.75*mm, thickness = 0.5*3.1*mm, 0, 360*deg);
+	G4VSolid* Ring = new G4Tubs("Mount_Ring", inner_radius = 46.5*mm, outer_radius = 56.75*mm, thickness = 0.5*3.1*mm, 0, 360*deg);
+	mountRingS = new G4SubtractionSolid("Mount_Ring", Ring, ScrewsS, 0, G4ThreeVector(0, 0, 0));
 	mountRingL = new G4LogicalVolume(mountRingS, Aluminium, "Mount_Ring_Log");
 	insulatingRingL = new G4LogicalVolume(mountRingS, FR_4, "Insulating_Ring_Log");
 }
