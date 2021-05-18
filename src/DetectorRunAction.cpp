@@ -11,10 +11,10 @@
 DetectorRunAction::DetectorRunAction()
 : G4UserRunAction()
 {
+
   detectorMessenger = new DetectorMessenger(this);
 
   auto analysisManager = G4AnalysisManager::Instance();
-  analysisManager -> SetNtupleMerging(true);
 
   analysisManager -> SetVerboseLevel(1);
 
@@ -35,7 +35,7 @@ DetectorRunAction::DetectorRunAction()
   analysisManager -> CreateNtupleDColumn("vertex_y");
   analysisManager -> CreateNtupleDColumn("vertex_z");
 
-  analysisManager->FinishNtuple();
+  analysisManager -> FinishNtuple();
 
 }
 
