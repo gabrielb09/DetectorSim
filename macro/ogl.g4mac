@@ -1,7 +1,22 @@
 /vis/open OGL
 /vis/viewer/set/style surface
-/vis/viewer/zoom 15
-/vis/viewer/set/viewpointThetaPhi 90 180
+/vis/viewer/zoom 5
 /vis/drawVolume
-/vis/geometry/set/visibility World 0 0
+#/vis/geometry/set/visibility World 0 0
 /vis/geometry/set/visibility Chamber_Walls_Logical 0 0
+/vis/geometry/set/visibility Screws_Logical 0 0
+/vis/geometry/set/visibility Washers_Logical 0 0
+/vis/geometry/set/visibility AlSquareLog 0 0
+/vis/geometry/set/visibility Chamber_Caps_Logical 0 0
+/vis/geometry/set/visibility Copper_Plate_Logical 0 0
+/vis/geometry/set/visibility Nickle_Coating_Logical 0 0
+/vis/geometry/set/visibility Cooling_Mount_Logical 0 0
+/vis/geometry/set/visibility Pipe_Logical 0 0
+/vis/geometry/set/visibility Nitrogen_Logical 0 0
+/vis/geometry/set/visibility Faraday_Cage_Logical 0 0
+/vis/geometry/set/visibility Mount_Ring_Log 0 0
+/vis/geometry/set/visibility Insulating_Ring_Log 0 0
+/vis/geometry/set/visibility Polyimide_Logical 0 0
+#/vis/geometry/set/visibility holderL 0 0
+#/vis/geometry/set/visibility preAmpL 0 0
+#/vis/geometry/set/visibility copperL 0 0

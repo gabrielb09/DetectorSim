@@ -342,7 +342,10 @@ G4VPhysicalVolume* DetectorConstruction::ConstructDetector()
     piGroovesL -> SetVisAttributes(PIVisAtt);
     holderL -> SetVisAttributes(FR4VisAtt);
     preAmpL -> SetVisAttributes(R3003VisAtt);
-    copperL -> SetVisAttributes(CuVisAtt);
+    pinL -> SetVisAttributes(CuVisAtt);
+    pinCapL -> SetVisAttributes(CuVisAtt);
+    linkArcL -> SetVisAttributes(CuVisAtt);
+    linkPinL -> SetVisAttributes(CuVisAtt);
     mountRingL -> SetVisAttributes(AlVisAtt);
     insulatingRingL -> SetVisAttributes(FR4VisAtt);
 

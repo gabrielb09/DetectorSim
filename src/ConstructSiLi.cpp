@@ -65,8 +65,8 @@ inline void DetectorConstruction::ConstructSiLi(){
 	detectorS = new G4SubtractionSolid("detector", Brim, Grooves, 0, G4ThreeVector(0, 0, 0));
 	piGroovesS = new G4SubtractionSolid("polyimide", Grooves, Brim, 0, G4ThreeVector(0, 0, 2.35*mm));
 
-  detectorL = new G4LogicalVolume(detectorS, Silicon, "SiLi Detector Logical");
-	piGroovesL = new G4LogicalVolume(piGroovesS, Polyimide, "Polyimide Logical");
+  detectorL = new G4LogicalVolume(detectorS, Silicon, "SiLi_Detector_Logical");
+	piGroovesL = new G4LogicalVolume(piGroovesS, Polyimide, "Polyimide_Logical");
 
 	SiLi = new G4AssemblyVolume();
 	rotation = G4RotationMatrix();
