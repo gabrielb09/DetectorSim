@@ -58,18 +58,14 @@ inline void DetectorConstruction::ConstructPreAmp(){
 			rotation.rotateY(-90*deg); rotation.rotateZ(180*deg);
 			translation.setX(jointLocations[j]); translation.setY(vertLocations[i] - 0.4*mm); translation.setZ(0.8*mm);
 			transform = G4Transform3D(rotation, translation);
-			//cuLeads -> AddNode(*linkArc, transform);
 			preAmp -> AddPlacedVolume(linkArcL, transform);
 
 			rotation = G4RotationMatrix();
 			translation.setX(jointLocations[j]); translation.setY(vertLocations[i] - 0.4*mm - 1.7907*mm); translation.setZ(-1.545*mm);
-			//cuLeads -> AddNode(*linkPin, transform);
 			preAmp -> AddPlacedVolume(linkPinL, transform);
 
 			rotation = G4RotationMatrix();
 			translation.setX(jointLocations[j]); translation.setY(vertLocations[i] - 0.4*mm - 1.7907*mm); translation.setZ(0);
-			//cuLeads -> AddNode(*linkFill, transform);
-
 		}
 	}
 }
