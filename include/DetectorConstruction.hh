@@ -219,7 +219,18 @@ class DetectorConstruction : public G4VUserDetectorConstruction
   G4VSolid*           preAmpS;
   G4LogicalVolume*    preAmpL;
 
-  G4LogicalVolume*    copperL;
+  G4VSolid*           pinS;
+  G4LogicalVolume*    pinL;
+
+  G4VSolid*           pinCapS;
+  G4LogicalVolume*    pinCapL;
+
+  G4VSolid*           linkArcS;
+  G4LogicalVolume*    linkArcL;
+
+  G4VSolid*           linkPinS;
+  G4LogicalVolume*    linkPinL;
+
 
   G4AssemblyVolume*   preAmp;
 

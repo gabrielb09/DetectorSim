@@ -324,7 +324,7 @@ G4VPhysicalVolume* DetectorConstruction::ConstructDetector()
     SteelVisAtt = new G4VisAttributes(G4Colour(0.50, 0.50, 0.50, 1.0));
     FaradayVisAtt = new G4VisAttributes(G4Colour(0.75, 0.75, 0.75, 0.5));
     AlVisAtt = new G4VisAttributes(G4Colour(0.75, 0.75, 0.75, 1.0));
-    
+
     worldL -> SetVisAttributes(TransparentVisAtt);
     ScrewsL -> SetVisAttributes(SteelVisAtt);
     WashersL -> SetVisAttributes(SteelVisAtt);
@@ -342,33 +342,12 @@ G4VPhysicalVolume* DetectorConstruction::ConstructDetector()
     piGroovesL -> SetVisAttributes(PIVisAtt);
     holderL -> SetVisAttributes(FR4VisAtt);
     preAmpL -> SetVisAttributes(R3003VisAtt);
-    copperL -> SetVisAttributes(CuVisAtt);
+    pinL -> SetVisAttributes(CuVisAtt);
+    pinCapL -> SetVisAttributes(CuVisAtt);
+    linkArcL -> SetVisAttributes(CuVisAtt);
+    linkPinL -> SetVisAttributes(CuVisAtt);
     mountRingL -> SetVisAttributes(AlVisAtt);
     insulatingRingL -> SetVisAttributes(FR4VisAtt);
-
-
-    /*
-    worldL -> SetVisAttributes(TransparentVisAtt);
-    ScrewsL -> SetVisAttributes(TransparentVisAtt);
-    WashersL -> SetVisAttributes(TransparentVisAtt);
-    AlSquareL -> SetVisAttributes(TransparentVisAtt);
-    chamberL -> SetVisAttributes(TransparentVisAtt);
-    lidL -> SetVisAttributes(TransparentVisAtt);
-    niPlateL -> SetVisAttributes(TransparentVisAtt);
-    cuPlateL -> SetVisAttributes(TransparentVisAtt);
-    coolantMountL -> SetVisAttributes(TransparentVisAtt);
-    coolingPipeL -> SetVisAttributes(TransparentVisAtt);
-    coolantLiquidL -> SetVisAttributes(TransparentVisAtt);
-    faradayCageL -> SetVisAttributes(TransparentVisAtt);
-    mountL -> SetVisAttributes(TransparentVisAtt);
-    detectorL -> SetVisAttributes(SiLiVisAtt);
-    piGroovesL -> SetVisAttributes(PIVisAtt);
-    holderL -> SetVisAttributes(FR4VisAtt);
-    preAmpL -> SetVisAttributes(R3003VisAtt);
-    copperL -> SetVisAttributes(CuVisAtt);
-    mountRingL -> SetVisAttributes(TransparentVisAtt);
-    insulatingRingL -> SetVisAttributes(TransparentVisAtt);
-    */
 
 	return worldP;
 }

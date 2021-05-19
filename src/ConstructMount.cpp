@@ -17,22 +17,28 @@ inline void DetectorConstruction::ConstructMount(){
    	// create single corner in top left
 	G4GenericTrap* Corner = new G4GenericTrap("corner", thickness = 0.5*12.0*mm + 1.0*mm, vertecies);
 
-	// create a union of all 4 corners
-	G4MultiUnion* Corners = new G4MultiUnion("Corners");
-	G4double X[4] = {61*mm, -61*mm, -61*mm, 61*mm};
-	G4double Y[4] = {61*mm, 61*mm, -61*mm, -61*mm};
+	rotation = G4RotationMatrix();
+	translation.setX(61*mm); translation.setY(61*mm); translation.setZ(0);
+	transform = G4Transform3D(rotation, translation);
+	G4SubtractionSolid* mountCut = new G4SubtractionSolid("mountCut", mountBase, Corner, transform);
 
-	for (int i = 0; i < 4; i++){
-		rotation = G4RotationMatrix();
-		rotation.rotateZ(i*90*deg);
-		translation.setX(X[i]); translation.setY(Y[i]); translation.setZ(0);
-		transform = G4Transform3D(rotation, translation);
-		Corners -> AddNode(*Corner, transform);
-	}
-	Corners -> Voxelize();
+	rotation = G4RotationMatrix();
+	rotation.rotateZ(90*deg);
+	translation.setX(-61*mm); translation.setY(61*mm); translation.setZ(0);
+	transform = G4Transform3D(rotation, translation);
+	mountCut = new G4SubtractionSolid("mountCut", mountCut, Corner, transform);
 
-	// subtract corners from base
-	G4SubtractionSolid* mountCut = new G4SubtractionSolid("cornerCut", mountBase, Corners, 0, G4ThreeVector(0, 0, 0));
+	rotation = G4RotationMatrix();
+	rotation.rotateZ(180*deg);
+	translation.setX(-61*mm); translation.setY(-61*mm); translation.setZ(0);
+	transform = G4Transform3D(rotation, translation);
+	mountCut = new G4SubtractionSolid("mountCut", mountCut, Corner, transform);
+
+	rotation = G4RotationMatrix();
+	rotation.rotateZ(270*deg);
+	translation.setX(61*mm); translation.setY(-61*mm); translation.setZ(0);
+	transform = G4Transform3D(rotation, translation);
+	mountCut = new G4SubtractionSolid("mountCut", mountCut, Corner, transform);
 
 	// hole
 	G4Tubs* Hole = new G4Tubs("hole", 0, radius = 47.5*mm, thickness = 0.5*12.0*mm, 0, 360*deg);
