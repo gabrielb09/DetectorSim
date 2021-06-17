@@ -27,8 +27,6 @@ find_package(ROOT REQUIRED)
 # Setup include directory for this project
 #
 include(${Geant4_USE_FILE})
-include_directories(${PROJECT_SOURCE_DIR}/include)
-
 #----------------------------------------------------------------------------
 # Locate sources and headers for this project
 #
